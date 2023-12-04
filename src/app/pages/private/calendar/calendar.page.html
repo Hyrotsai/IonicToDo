@@ -1,0 +1,16 @@
+<app-header Tittle="Calendar"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-datetime
+    displayFormat="DD.MM.YYYY"
+    presentation="date"
+    [highlightedDates]="highlightedDates"
+    [(ngModel)]="SelectedDate"
+    (ionChange)="getDateFromCalendar()"
+  >
+    <span slot="title">Select a Reservation Date</span>
+  </ion-datetime>
+  <ng-container *ngIf="finalUserCalendarTask.length > 0">
+    <app-calendar-task [userTask]="finalUserCalendarTask"></app-calendar-task>
+  </ng-container>
+</ion-content>

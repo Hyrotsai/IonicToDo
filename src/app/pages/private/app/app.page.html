@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>app</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header Tittle="Home"> </app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">app</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-accordion-group expand="inset" [multiple]="true">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-badge slot="end">{{totalTaskToday}}</ion-badge>
+        <ion-label>Today</ion-label>
+      </ion-item>
+      <div slot="content">
+        <app-task-today
+          (sendTaskTodayLength)="getTaskTodayLength($event)"
+        ></app-task-today>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-badge slot="end">{{totalTaskSoon}}</ion-badge>
+        <ion-label>Soon</ion-label>
+      </ion-item>
+      <div slot="content">
+        <app-task-soon
+          (sendTaskSoonLength)="getTaskSoonLength($event)"
+        ></app-task-soon>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="third">
+      <ion-item slot="header" color="light">
+        <ion-label>Finished</ion-label>
+      </ion-item>
+      <div slot="content">
+        <app-task-finished></app-task-finished>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <app-task-fab></app-task-fab>
 </ion-content>

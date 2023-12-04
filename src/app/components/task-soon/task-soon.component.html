@@ -1,0 +1,26 @@
+<ion-list lines="none" *ngIf="userTaskSoon.length > 0; else noTask">
+  <ng-container *ngFor="let item of userTaskSoon">
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option color="secondary" (click)="completeTask(item)"
+          >Completar</ion-item-option
+        >
+      </ion-item-options>
+
+      <ion-item>
+        <ion-checkbox labelPlacement="end" justify="start">{{
+          item.title
+        }}</ion-checkbox>
+        <ion-text slot="end">{{ item.date | date }}</ion-text>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteTask(item)"
+          >Delete</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding>
+  </ng-container>
+</ion-list>
+
+<ng-template #noTask> <app-task-not-found></app-task-not-found> </ng-template>

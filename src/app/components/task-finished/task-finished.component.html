@@ -1,0 +1,10 @@
+<ion-list lines="none" *ngIf="userTaskFinished.length > 0; else noTask">
+  <ng-container *ngFor="let item of userTaskFinished">
+    <ion-item>
+      <ion-label>{{ item.title }} </ion-label>
+      <ion-text slot="end">{{ item.date | date }}</ion-text>
+    </ion-item>
+  </ng-container>
+</ion-list>
+
+<ng-template #noTask> <app-task-not-found></app-task-not-found> </ng-template>

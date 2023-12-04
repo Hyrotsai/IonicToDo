@@ -1,0 +1,35 @@
+<ion-list>
+  <ion-item>
+    <ion-input
+      placeholder="Que necesitas hacer?"
+      (ionInput)="checkTitle($event)"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-toggle justify="space-between" (ionChange)="checkAlarm($event)"
+      >Alarma</ion-toggle
+    >
+  </ion-item>
+  <ion-item>
+    <ion-label>Dia de la tarea</ion-label>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+  </ion-item>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime
+        id="datetime"
+        hourCycle="h12"
+        [showDefaultTitle]="true"
+        [showDefaultButtons]="true"
+        [showClearButton]="true"
+        doneText="Aceptar"
+        cancelText="Cancelar"
+        clearText="Limpiar"
+        (ionChange)="checkDate($event)"
+      >
+        <span slot="title">Selecciona la fecha de la tarea</span>
+      </ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-list>
